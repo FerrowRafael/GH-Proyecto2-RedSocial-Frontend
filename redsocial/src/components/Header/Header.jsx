@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
 // import { connect } from "react-redux";
-// import { logout } from '../../redux/actions/users';
+import { logout } from '../../redux/actions/users';
 // import Search  from '../SearchBar/SearchBar'
 import { Input, Badge } from 'antd';
 import { BellFilled, MessageFilled, CrownFilled, ZoomInOutlined } from '@ant-design/icons';
@@ -12,49 +12,6 @@ class Header extends Component {
     render(){
         console.log(this.props.user)
         return (
-        //     <nav class="navbar" role="navigation" aria-label="main navigation">
-        //         <div class="navbar-brand">
-        //             <a class="navbar-item" href="index.php">
-        //             <NavLink to="/home" exact><img src="https://i.pinimg.com/originals/0d/ea/4a/0dea4ad3030467e2f65cde00935ba62b.png"/></NavLink>
-        //             </a>
-
-        //             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        //             <span aria-hidden="true"></span>
-        //             <span aria-hidden="true"></span>
-        //             <span aria-hidden="true"></span>
-        //             </a>
-        //         </div>
-
-        //         <div id="navbarBasicExample" class="navbar-menu">
-        //             <div class="navbar-start">
-        //                 <NavLink to="/home" exact>Inicio</NavLink>
-        //                 <NavLink to="/register" exact>Siguiendo</NavLink>  
-        //             </div>
-
-        //             {/* Buscador */}
-        //             <div className="search navbar-menu">
-        //                 <div class="field has-addons navbar-center">
-        //                     <div class="control">
-        //                         <Input prefix={<ZoomInOutlined />}class="input" type="text" placeholder="Buscar" />
-        //                     </div>
-        //                     <div class="control">
-        //                         <a class="button is-info">
-        //                             Search
-        //                         </a>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="search navbar-menu">
-        //                 <div class="field has-addons navbar-end">
-
-        //                     <BellOutlined/>
-        //                     <MessageFilled />
-        //                     <CrownFilled />
-        //                 </div>
-        //             </div>
-                    
-        //         </div>   
-        // </nav>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <NavLink to="/home" exact class="navbar-item">
@@ -67,7 +24,7 @@ class Header extends Component {
                 <span aria-hidden="true"></span>
                 </a>
             </div>
-                        
+
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <NavLink to="/home" exact class="navbar-item">
@@ -94,12 +51,12 @@ class Header extends Component {
                                         <BellFilled style={{ fontSize: '32px' }} />
                                     </Badge>
                                 </NavLink>
-                                <NavLink to="/carrito" exact>
+                                <NavLink to="/profile" exact>
                                     <Badge >
                                         <MessageFilled style={{ fontSize: '32px' }} />
                                     </Badge>
                                 </NavLink>
-                                <NavLink to="/carrito" exact>
+                                <NavLink to="/profile" exact>
                                     <Badge>
                                         <CrownFilled style={{ fontSize: '32px' }} />
                                     </Badge>
@@ -121,7 +78,7 @@ class Header extends Component {
                                 Contact
                             </a>
                             <a class="button is-primary">
-                                <strong>Logout</strong>
+                                <NavLink type="link" onClick={logout} to="/home">Logout</NavLink>
                             </a>
                         </div>
                     </div>
