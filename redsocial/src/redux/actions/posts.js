@@ -16,3 +16,18 @@ export const postsAll = async() => {
         payload: res.data
     });
 };
+
+// CREATE POST
+export const addPost = async() => {
+
+    const res = await axios.post('http://localhost:8000/api/v1/likes', {
+        headers: {
+            Authorization: localStorage.getItem('authToken')
+        }
+    });
+    store.dispatch({ 
+        type: 'ADD_POST',
+        payload: res.data
+    });
+    
+}

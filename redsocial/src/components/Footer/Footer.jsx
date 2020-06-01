@@ -1,5 +1,8 @@
 import React from 'react';
 import './Footer.scss';
+import { PlusCircleOutlined } from '@ant-design/icons';
+import { Input, Badge } from 'antd';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -20,6 +23,11 @@ const Footer = () => {
                 <li>Home</li>
                 <li>Busquedas</li>
                 <li>Carrito</li>
+                <NavLink to="/pin-builder" exact>
+                  <Badge >
+                    <PlusCircleOutlined style={{ fontSize: '32px' }} />
+                  </Badge>
+                </NavLink>
             </ul>
             </div>
           </div>

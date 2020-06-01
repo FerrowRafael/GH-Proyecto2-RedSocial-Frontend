@@ -9,6 +9,7 @@ import Login from './containers/User/Login/Login';
 import Registro from './containers/User/Register/Register';
 import Profile from './containers/Profile/Profile';
 import Detail from './containers/Detail/Detail';
+import PinBuilder from './containers/PinBuilder/PinBuilder';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/register" component= {Registro} exact/>
             <Route path="/profile" component= { Profile } exact/>
             <Route path="/post/:id" component= { Detail } exact/>
+            <Route path="/pin-builder" component= { PinBuilder } exact/>
           </Switch>
           <Footer/>
         </div>
