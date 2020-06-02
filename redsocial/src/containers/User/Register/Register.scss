@@ -1,49 +1,124 @@
 @import '../../../colors.scss';
+main {
+    background-image: url("https://store-images.s-microsoft.com/image/apps.54654.14204669951057618.66f35ee3-03b9-46a6-b185-b9ce0ffda2f4.eeff01db-b986-4e3b-b0de-7da6baf143eb?mode=scale&q=90&h=1080&w=1920");
+    background-color: rgb(255, 255, 255);
+    background-attachment: fixed;
+    min-height: 100vh;
+   }
 
-.registerContainer {
+   .registerContainer{
     padding: 1.2em;
+    text-align: center;
+    /* margin: 5.6em; */
+    /* position: relative; */
+    /* border-radius: 25%; */
+    /* max-width: 500px; */
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
-    margin: 5.6em;
-    position: relative;
-    label {
-        color: $white;
+    .ant-card-bordered {
+        margin-top: 250px;
+    }
+    h2{
+        font-size: 24px;
+    }
+    
+    img{
+        margin-bottom: 10px;
     }
 
-    
-    // background-color: blueviolet;
-    
-  
+    .ant-form-item{
+        margin-bottom: 0px;
+    }
 
-
-    .registerleft{
-        // background-color: blue;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: auto;
-        Button{
-            background-color: $darkblue;
+    button {
+        background-color: #D50C22;
+        width: 250px;
+        height: 35px;
+        border-radius: 25px; 
+        margin-top: 10px;
         }
+
+        .ant-form-item-control:first-child:not([class^='ant-col-']):not([class*=' ant-col-']) {
+            width: 100%;
+            margin-bottom: -20px;
+        }
+
+    .buttonInicio{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: "Roboto";
+        margin: 0px;   
     }
 
-    .ant-input-affix-wrapper{
+    strong{
+        color: white;
+    }
+
+    .formRegister{
+        display: flex;
+        justify-content: center;
+    }
+
+    .register-form-button{
+        background-color: #D50C22;
+        strong{
+            color: rgb(243, 235, 235);
+        }   
+    }
+
+    a{
+        font-size: 12px;
+        color: black;
+    }
+    .register-form-button:hover{
+        background-color: #AD081B;
+    }
+
+    .facebook-form-button{
+        background-color: #1877F2;
+    }
+
+    .google-form-button{
+        background-color: rgb(236, 226, 228);
+        margin-top: 10px;
+        strong{
+            color: rgb(0, 0, 0);
+        }   
+    }
+
+    .ant-input-affix-wrapper {
         margin-top: 5px;
-        width: 400px ;
+        width: 250px;
         height: 45px;
         background-color: #FFFFFF;
-        border-radius: 15px ;
-        .ant-input{
-            background-color: #FFFFFF;
-        }
+        border-radius: 15px;
     }
-    Button {
-        background-color: #D50C22;
-        width: 400px;
-        height: 40px;
-        border-radius: 25px;
-    }
-}
 
+    .ant-card-bordered {
+        border-radius: 15px;
+        margin-top: 160px;
+    }
+
+    .ant-input-affix-wrapper .ant-input {
+        background-color: #FFFFFF;
+    }
+    .ant-card-body {
+        padding: 30px;
+        min-width: 450px;
+    }
+
+    strong{
+        color: white;
+    }
+
+    p{
+        font-size: 11px;
+        margin-top: 16px;
+    }
+    
+  
+}
 

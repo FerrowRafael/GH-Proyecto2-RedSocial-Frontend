@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 // Import Components
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 import Inicio from './containers/Inicio/Inicio';
 import Home from './containers/Home/Home';
 import Login from './containers/User/Login/Login';
@@ -13,7 +12,7 @@ import Detail from './containers/Detail/Detail';
 import PinBuilder from './containers/PinBuilder/PinBuilder';
 
 function App() {
-  const showHeaderF = () => {
+  const showHeader = () => {
     const path = window.location.pathname;
     let show;
     if (path === '/register' || path === '/login' || path === '/'){
@@ -27,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        { showHeaderF() ? <Header/> : ''}
+        { showHeader() ? <Header/> : ''}
           <Switch>
           <Route path="/" component= { Inicio } exact/>
             <Route path="/home" component= { Home } exact/>
@@ -37,7 +36,6 @@ function App() {
             <Route path="/post/:id" component= { Detail } exact/>
             <Route path="/pin-builder" component= { PinBuilder } exact/>
           </Switch>
-          { showHeaderF() ? <Footer/> : ''}
       </BrowserRouter>
     </div>
   );
