@@ -27,7 +27,7 @@ const Login = () => {
         notification.success({
             message: 'Usuario conectado éxito'
         });
-        history.push('/home') //this.router.navigate(['/login]) en angular
+        history.push('/home') 
       })
       .catch(error=>{
           console.error(error)

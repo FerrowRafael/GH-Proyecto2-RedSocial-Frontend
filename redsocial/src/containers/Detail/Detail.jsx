@@ -3,13 +3,13 @@ import axios from "axios";
 // import { useParams, NavLink } from 'react-router-dom';
 import './Detail.scss'
 import { connect } from "react-redux";
-import { categoriesAll } from "../../redux/actions/categories"; 
+import { categoriesAll } from "../../redux/actions/categories";
+import { comentar } from "../../redux/actions/comments";  
 import { LikeFilled, LikeOutlined } from '@ant-design/icons';
 import { Row, Col, Card, Button, notification } from 'antd';
 import { useLocation, useParams } from 'react-router-dom'
 
 class Detail extends Component {
-
 
     constructor(props) {
         super(props);
@@ -31,7 +31,6 @@ class Detail extends Component {
         const { id } = this.props.match.params;
         console.log(id, this.props.posts)
         this.setState({ postactual:((this.props.posts)?.find(post => post.id == id))})
-        console.log(this.state.postactual)
         categoriesAll();
     }
 
@@ -66,76 +65,76 @@ class Detail extends Component {
         });
     }
 
-    comentar(event){
-    
-        event.preventDefault();
-        console.log(this.state.userId)
-        let post_id= this.state?.userId;
-        console.log(post_id)
-        const comment = {
-            text: event.target.text.value,
-        }
-        axios.post('http://localhost:8000/api/v1/comments/' + post_id, comment,{
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem('authToken')
-                }
-            })
-                .catch(console.error)
-    }
-      
-    render() {
+    handleSubmit(event, props) {  
+        event.preventDefault(); 
 
+        let hola= this.props.match.params.id
+        console.log(hola)
+        // comentar(event, id);
+        // const { title } = this.state;  
+        // const id = uuidv1();  
+        // this.props.addComment({ title,id });  
+        // this.setState({ title: ""});  
+    }  
+
+    render() {
+        
         console.log(this?.state.userId)
         const label = this.state.liked ? <button className="btn" onClick={()=>this.daledislike()}>
         <LikeFilled /></button> : <button className="btn" onClick={()=>this.dalelike()}>
         <LikeOutlined /></button>
         return (
             <Fragment>
-                    <Card justify style={{ width: 1200, display: 'inline-flex', justifyContent: 'center', alignItems: 'center'  }}>
-                        <Row>
-                            <Col span={12}>
-                                <img width="100%" src={this.state.postactual?.image_path} alt=""/>
-                            </Col>
-                       
-                            <Col span={12}>
-                                <p>Nickname: {this.state.postactual?.user?.nickname}</p>
-                                <p>Category: {this.state.postactual?.category?.name}</p>
-                                <p class="is-size-3"><strong>{this.state.postactual?.title}</strong></p>
-                                <p><strong>{this.state.postactual?.text}</strong></p>
+                    <Card className="tarjeta" justify style={{ width: 1000, display: 'inline-flex', justifyContent: 'center', alignItems: 'center'  }}>
+                        <Row class="columns">
+                            <div class="column is-half" span={12}>
+                                <img class="imgDetail" width="100%" src={this.state.postactual?.image_path} alt=""/>
+                            </div>
+                        
+                            <div class="column is-half" span={12}>
+                                <p>{this.state.postactual?.category?.name}</p>
+                                <p class="is-size-2"><strong>{this.state.postactual?.title}</strong></p>
+                                <p>{this.state.postactual?.text}</p>
+                                <Row>
+                                    <p><strong>{this.state.postactual?.user?.nickname}</strong></p>
+                                    <Button>Seguir</Button>
+                                </Row>
+                                
 
                                 {/* COMENTARIOS */}
                                 <Col class="navbar-item comments">
-                                    <p>Comentarios: </p>
-                                    {(this.state.postactual?.comment)?.map(com =>
-                                    <article className="media">
-                                        <figure className="media-left">
-                                            <p className="image is-64x64">
-                                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Avatar" />
-                                            </p>
-                                        </figure>
-                                        <div className="media-content">
-                                        <div className="content">
-                                            <p>
-                                            <strong>{com?.user.nickname}</strong>
-                                            <br />
-                                            {com?.text}
-                                            </p>
-                                        </div>
-                                        </div>
-                                        
-                                    </article>)}
-                                    
+                                    <p><strong>Comentarios</strong></p>
+                                    <div>
+                                        {(this.state.postactual?.comment)?.map(com =>
+                                        <article className="media">
+                                            <figure className="media-left">
+                                                <p className="image is-64x64">
+                                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Avatar" />
+                                                </p>
+                                            </figure>
+                                            <div className="media-content">
+                                                <div className="content ">
+                                                    <p>
+                                                    <strong>{com?.user.nickname}</strong>
+                                                    <br />
+                                                    {com?.text}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                        </article>)}
+                                    </div>
                                     <div>
                                         <p>{this.props.user.nickname}</p>
-                                        <form className="comentar" onSubmit={this.comentar}>
-                                            <div className="field">
+                                        <form onSubmit={this.handleSubmit}> 
+                                            <div className="comentar" onSubmit={this.handleSubmit}>
                                                 <div className="control">
                                                 <textarea className="textarea" name="text" placeholder="Add a comment"></textarea>
                                                 </div>
                                             </div>
                                             <div className="field">
                                                 <div className="control">
-                                                <input className="btn" type="submit" value="Comenta" />
+                                                <button type="submit" className="btn btn-success btn-lg mt-2">Añadir comentario</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -155,7 +154,7 @@ class Detail extends Component {
                                        
                                     </div>
                                 </div>
-                            </Col>
+                            </div>
                      
                         </Row> 
                     </Card>

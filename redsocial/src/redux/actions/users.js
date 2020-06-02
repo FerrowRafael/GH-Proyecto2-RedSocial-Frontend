@@ -11,6 +11,7 @@ export const login = async(user) => {
         type: 'LOGIN',
         payload: res.data.user
     });
+
 }
 
 // LOGOUT   

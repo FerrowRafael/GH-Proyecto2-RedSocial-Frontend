@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '../store';
 // import { API_URL } from '../../api-config'
 
-// GET ALL PRODUCTS
+// GET ALL POSTS
 export const postsAll = async() => {
     console.log(localStorage.getItem('authToken'))
     const res = await axios.get('http://localhost:8000/api/v1/posts',{
