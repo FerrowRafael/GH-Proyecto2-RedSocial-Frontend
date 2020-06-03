@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import './Profile.scss';
 import { connect } from "react-redux";
-import { Row, Badge } from 'antd';
+import { Row, Badge, Col } from 'antd';
 import { PlusCircleOutlined, EditFilled, UploadOutlined } from '@ant-design/icons';
 
 class Profile extends Component{
@@ -9,9 +10,9 @@ class Profile extends Component{
         console.log(this.props.users?.nickname)
     
     return (
-        <div className="profile">
-            <div>
-                <Row>
+        <div className="profileContainer">
+            <div className="badges columns">
+                <Col span={12}>
                     <Badge>
                         <PlusCircleOutlined style={{ fontSize: '32px' }} />
                     </Badge>
@@ -21,11 +22,12 @@ class Profile extends Component{
                     <Badge>
                         <UploadOutlined style={{ fontSize: '32px' }} />
                     </Badge>
-                </Row>
+                </Col>
+                <Col span={12}></Col>
             </div>
-            <Row>
+            <Row className="profileData">
                 <div>
-                    <p>{this.props.user?.nickname}</p>
+                    <h1>{this.props.user?.nickname}</h1>
                     <Row>
                         <p>XX Seguidores</p>
                         <p>Siguiendo a XX</p>  
@@ -35,7 +37,7 @@ class Profile extends Component{
                     <img width="100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" alt=""/>
                 </div>
             </Row>
-            <Row>
+            <Row className="tableros">
                 <p>Tableros</p>
                 <p>Pines</p>
                 <p>Seguidores</p>

@@ -33,14 +33,19 @@ class Detail extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
+        console.log(this.props.user.id)
         console.log(id, this.props.posts)
         this.setState({ postactual:((this.props.posts)?.find(post => post.id == id))})
-        // console.log(this.state.postId);
+        
+        let checklike = (this.state.postactual?.likes?.pivot)?.find(like => like?.nickname === "User1");
+        console.log(checklike);
+        (this.checklike ? this.setState({liked: true}) : this.setState({liked: false})) 
         categoriesAll();
         comentariosPost(id);
     }
 
     dalelike() {
+        console.log(this.checklike);
         console.log(this.state.postactual?.id);
         let post_id= this.props.match.params.id;
         this.togglelikestate()
@@ -91,7 +96,8 @@ class Detail extends Component {
 
     render() {
         // console.log(this.props.match.params, this.state.postactual?.category?.name)
-
+        let likeCant= this.state.postactual?.likes?.length;
+        console.log(likeCant);
         const label = this.state.liked ? <button className="btn" onClick={()=>this.daledislike()}>
         <LikeFilled /></button> : <button className="btn" onClick={()=>this.dalelike()}>
         <LikeOutlined /></button>
@@ -108,15 +114,14 @@ class Detail extends Component {
                             <h3>{this.state.postactual?.title}</h3>
                             <p>{this.state.postactual?.text}</p>
                             <Row>
-                                <p>Likes</p>
+                                <p>Likes <a>{this.state.postactual?.likes?.length}</a> </p>
                                 {(this.state.postactual?.likes)?.map(like => <a class="navbar-item"> {like?.nickname} </a>)}
                             </Row>
                             
                             <Row>
-                                <p><strong>{this.state.postactual?.user?.nickname}</strong></p>
+                                <p>{this.state.postactual?.user?.nickname}</p>
                                 <Button>Seguir</Button>
                             </Row>
-
 
                                 {/* COMENTARIOS */}
                                 <Col class="navbar-item comments">
