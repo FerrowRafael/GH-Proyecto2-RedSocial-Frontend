@@ -19,6 +19,7 @@ main {
     .ant-card-bordered {
         margin-top: 250px;
     }
+
     h2{
         font-size: 24px;
     }
@@ -37,12 +38,12 @@ main {
         height: 35px;
         border-radius: 25px; 
         margin-top: 10px;
-        }
+    }
 
-        .ant-form-item-control:first-child:not([class^='ant-col-']):not([class*=' ant-col-']) {
+    .ant-form-item-control:first-child:not([class^='ant-col-']):not([class*=' ant-col-']) {
             width: 100%;
             margin-bottom: -20px;
-        }
+    }
 
     .buttonInicio{
         display: flex;

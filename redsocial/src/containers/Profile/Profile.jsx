@@ -1,22 +1,40 @@
 import React, {Component} from 'react'
 import { connect } from "react-redux";
-import { Row } from 'antd';
+import { Row, Badge } from 'antd';
+import { PlusCircleOutlined, EditFilled, UploadOutlined } from '@ant-design/icons';
 
 class Profile extends Component{
 
-    
     render(){
         console.log(this.props.users?.nickname)
     
     return (
-        <div>
+        <div className="profile">
             <div>
-                <h2>Soy un Perfil</h2>
-                <p>{this.props.user?.nickname}</p>
-                <p>Seguidores</p>
-                <p>Siguiendo</p>
-                <p>IMAGEN PERFIL</p>
+                <Row>
+                    <Badge>
+                        <PlusCircleOutlined style={{ fontSize: '32px' }} />
+                    </Badge>
+                    <Badge>
+                        <EditFilled style={{ fontSize: '32px' }} />
+                    </Badge>
+                    <Badge>
+                        <UploadOutlined style={{ fontSize: '32px' }} />
+                    </Badge>
+                </Row>
             </div>
+            <Row>
+                <div>
+                    <p>{this.props.user?.nickname}</p>
+                    <Row>
+                        <p>XX Seguidores</p>
+                        <p>Siguiendo a XX</p>  
+                    </Row>
+                </div>
+                <div>
+                    <img width="100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" alt=""/>
+                </div>
+            </Row>
             <Row>
                 <p>Tableros</p>
                 <p>Pines</p>

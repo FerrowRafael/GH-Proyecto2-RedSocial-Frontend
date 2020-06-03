@@ -1,15 +1,13 @@
 import React, { useEffect, Fragment } from 'react';
 // import './Home.scss'
 import { connect } from "react-redux";
+import Post from '../../components/Post/Post';
 import { Col, Row, Input, Badge } from 'antd';
 import { postsAll } from '../../redux/actions/posts';
-import Post from '../../components/Post/Post';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 
-
 const Home = (props) => {
-
     useEffect(() => {
         postsAll()
         console.log(props.posts)
@@ -31,75 +29,7 @@ const Home = (props) => {
                 </Badge>
             </NavLink>
         </Fragment>
-//             <Row gutter={[8, 8]}>
-//       <Col className="gutter-row" span={4}>
-        
-//       <img class="well" width="100%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%"  src="https://eloutput.com/app/uploads-eloutput.com/2019/03/sonic-real-imagen-pelicula.jpg"/>
-//   <img class="well" width="100%"  src="https://previews.123rf.com/images/nexusplexus/nexusplexus1307/nexusplexus130702343/21214032-imagen-de-%C3%A1tomos-y-electrones-de-color-concepto-f%C3%ADsica.jpg"/>
-
-//   <img  class="well"width="100%" height="40%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-        
-//       </Col>
-//       <Col className="gutter-row" span={4}>
-        
-//       <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-//   <img class="well" width="100%" height="50%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-        
-//       </Col>
-//       <Col className="gutter-row" span={4}>
-        
-//       <img class="well" width="100%" height="10%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="20%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-//   <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-        
-//       </Col>
-//       <Col className="gutter-row" span={4}>
-        
-//       <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-//   <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-        
-//       </Col>
-//       <Col className="gutter-row" span={4}>
-        
-//       <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="70%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-//   <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="20%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-        
-//       </Col>
-//       <Col className="gutter-row" span={4}>
-        
-//       <img class="well" width="100%" height="40%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="60%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-//   <img class="well" width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//   <img  class="well"width="100%" height="80%" src="https://www.socialnautas.es/wp-content/uploads/2019/01/Linkedin-1-e1548847344163.jpg"/>
-
-//       </Col>
- 
-//     </Row>
-        )
+    )
            
         
     

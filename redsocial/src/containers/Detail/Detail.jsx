@@ -4,9 +4,10 @@ import axios from "axios";
 import './Detail.scss'
 import { connect } from "react-redux";
 import { categoriesAll } from "../../redux/actions/categories";
-import { comentar } from "../../redux/actions/comments";  
+import { postsAll } from "../../redux/actions/posts"
+import { comentariosPost, comentar } from "../../redux/actions/comments";
 import { LikeFilled, LikeOutlined } from '@ant-design/icons';
-import { Row, Col, Card, Button, notification } from 'antd';
+import { Row, Col, Card, Button, notification,Input } from 'antd';
 import { useLocation, useParams } from 'react-router-dom'
 
 class Detail extends Component {
@@ -17,9 +18,12 @@ class Detail extends Component {
             active: false,
             postactual: {},
             liked: false,
-            userId: this.props.match.params.id
+            text: '',
+            
         };
         this.dalelike = this.dalelike.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // check() {
@@ -28,24 +32,25 @@ class Detail extends Component {
     // }
 
     componentDidMount() {
-        const { id } = this.props.match.params;
+        const id = this.props.match.params.id;
         console.log(id, this.props.posts)
         this.setState({ postactual:((this.props.posts)?.find(post => post.id == id))})
+        // console.log(this.state.postId);
         categoriesAll();
+        comentariosPost(id);
     }
 
-
-    dalelike() {        
+    dalelike() {
         console.log(this.state.postactual?.id);
         let post_id= this.props.match.params.id;
         this.togglelikestate()
-        
             axios.post('http://localhost:8000/api/v1/likes', {post_id},{
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem('authToken')
                 }
             })
                 .catch(console.error)
+        postsAll();
     }
 
     daledislike() {
@@ -57,6 +62,7 @@ class Detail extends Component {
             }
         })
             .catch(console.error)
+        postsAll();
     }
 
     togglelikestate(){
@@ -65,41 +71,52 @@ class Detail extends Component {
         });
     }
 
-    handleSubmit(event, props) {  
-        event.preventDefault(); 
+    handleSubmit(event) {
+        event.preventDefault();
+        let text = this.state.text
+        let post_id = this.props.match.params.id;
+        console.log(text, post_id)
+        comentar({text}, post_id);
+        
+    }
 
-        let hola= this.props.match.params.id
-        console.log(hola)
-        // comentar(event, id);
-        // const { title } = this.state;  
-        // const id = uuidv1();  
-        // this.props.addComment({ title,id });  
-        // this.setState({ title: ""});  
-    }  
+    handleChange(event) {
+        this.setState({text: event.target.value});
+    }
+
+    // handleSubmit(event) {
+    //     alert('A name was submitted: ' + this.state.text);
+    //     event.preventDefault();
+    //   }
 
     render() {
-        
-        console.log(this?.state.userId)
+        // console.log(this.props.match.params, this.state.postactual?.category?.name)
+
         const label = this.state.liked ? <button className="btn" onClick={()=>this.daledislike()}>
         <LikeFilled /></button> : <button className="btn" onClick={()=>this.dalelike()}>
         <LikeOutlined /></button>
         return (
             <Fragment>
-                    <Card className="tarjeta" justify style={{ width: 1000, display: 'inline-flex', justifyContent: 'center', alignItems: 'center'  }}>
-                        <Row class="columns">
-                            <div class="column is-half" span={12}>
-                                <img class="imgDetail" width="100%" src={this.state.postactual?.image_path} alt=""/>
-                            </div>
-                        
-                            <div class="column is-half" span={12}>
-                                <p>{this.state.postactual?.category?.name}</p>
-                                <p class="is-size-2"><strong>{this.state.postactual?.title}</strong></p>
-                                <p>{this.state.postactual?.text}</p>
-                                <Row>
-                                    <p><strong>{this.state.postactual?.user?.nickname}</strong></p>
-                                    <Button>Seguir</Button>
-                                </Row>
-                                
+                <Card className="tarjeta" justify style={{ width: 1000, display: 'inline-flex', justifyContent: 'center', alignItems: 'center'  }}>
+                    <Row class="columns">
+                        <div class="column is-half" span={12}>
+                            <img class="imgDetail" width="100%" src={this.state.postactual?.image_path} alt=""/>
+                        </div>
+
+                        <div class="column is-half" span={12}>
+                            <p>{this.state.postactual?.category?.name}</p>
+                            <h3>{this.state.postactual?.title}</h3>
+                            <p>{this.state.postactual?.text}</p>
+                            <Row>
+                                <p>Likes</p>
+                                {(this.state.postactual?.likes)?.map(like => <a class="navbar-item"> {like?.nickname} </a>)}
+                            </Row>
+                            
+                            <Row>
+                                <p><strong>{this.state.postactual?.user?.nickname}</strong></p>
+                                <Button>Seguir</Button>
+                            </Row>
+
 
                                 {/* COMENTARIOS */}
                                 <Col class="navbar-item comments">
@@ -121,42 +138,44 @@ class Detail extends Component {
                                                     </p>
                                                 </div>
                                             </div>
-                                            
+
                                         </article>)}
                                     </div>
                                     <div>
                                         <p>{this.props.user.nickname}</p>
-                                        <form onSubmit={this.handleSubmit}> 
-                                            <div className="comentar" onSubmit={this.handleSubmit}>
-                                                <div className="control">
-                                                <textarea className="textarea" name="text" placeholder="Add a comment"></textarea>
-                                                </div>
-                                            </div>
-                                            <div className="field">
-                                                <div className="control">
-                                                <button type="submit" className="btn btn-success btn-lg mt-2">Añadir comentario</button>
-                                                </div>
-                                            </div>
+                                        <form onSubmit={this.handleSubmit}>
+                                            <label>
+                                            Name:
+                                            <input type="text" value={this.state.text} onChange={this.handleChange} />
+                                            </label>
+                                            <input type="submit" value="Submit" />
                                         </form>
+                                        {/* <form className="patata">
+                                            <input type="text" name="text"  
+                                            placeholder="Busca producto" 
+                                            value={this.state.text}/>
+                                            <Button  type="primary" onClick={() => {this.comentario()}}>Añadir comentario</Button>
+                                           
+                                        </form> */}
                                     </div>
                                 </Col>
-                                       
+
                                 <div className="customContainer">
                                     {label}
                                 </div>
                                 <div class="navbar-item has-dropdown is-hoverable">
                                     <a class="navbar-link">
-                                    Elige Categoria
+                                        Elige Categoria
                                     </a>
-                                
+
                                     <div class="navbar-dropdown">
                                         {(this.props.categories)?.map(category => <a class="navbar-item"> {category?.name}</a>)}
-                                       
+
                                     </div>
                                 </div>
                             </div>
-                     
-                        </Row> 
+
+                        </Row>
                     </Card>
                   {/*<Row className="site-card-border-less-wrapper">
                     <Card>
@@ -164,8 +183,8 @@ class Detail extends Component {
                     </Card>
                     <Col span={6} className="detail"> */}
 
-                        
-                        
+
+
 
                     {/* </Col>
                 </Row> */}
@@ -176,7 +195,7 @@ class Detail extends Component {
                     </Col>
                     <Col span={6} className="detail">
 
-                        
+
                         <div>
                             <Col>
                                 <p>Nickname</p>
@@ -208,11 +227,11 @@ class Detail extends Component {
 
                     </Col>
                 </Row> */}
-            
+
             </Fragment>
         )
     }
 }
 
-const mapStateToProps = (state) => ({ posts: state.posts, categories: state.categories, user: state.user })
+const mapStateToProps = (state) => ({ posts: state.posts, categories: state.categories, user: state.user, postDetail: state.postDetail })
 export default connect(mapStateToProps)(Detail);

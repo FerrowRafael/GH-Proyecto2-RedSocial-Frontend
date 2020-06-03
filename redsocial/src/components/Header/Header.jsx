@@ -69,13 +69,7 @@ class Header extends Component {
                         
                         <div class="navbar-dropdown">
                             <a class="navbar-item">
-                                About
-                            </a>
-                            <a class="navbar-item">
-                                Jobs
-                            </a>
-                            <a class="navbar-item">
-                                Contact
+                                Profile
                             </a>
                             <a class="button is-primary">
                                 <NavLink type="link" onClick={logout} to="/home">Logout</NavLink>

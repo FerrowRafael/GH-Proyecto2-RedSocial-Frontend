@@ -28,11 +28,24 @@ const reducer = (state = { }, action) => {
         } 
 
         // COMMENTS  
-        case 'ADD_COMMENT':
+        case 'COMMENTS_POST':
         return {
             ...state,
-            comments: action.payload
+            comments_post: action.payload
         } 
+
+        //   // COMMENTS  
+        //   case 'ADD_COMMENT':
+        //     return {
+        //         ...state,
+        //         comments_post: [...state.comments_post, action.payload]
+        //     } 
+
+        case 'GET_POST_DETAIL':
+            return {
+                ...state,
+                postDetail: action.payload
+            } 
 
         default:
             return state;

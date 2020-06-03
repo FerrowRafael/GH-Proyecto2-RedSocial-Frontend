@@ -4,7 +4,7 @@ import store from '../store';
 
 // GET ALL POSTS
 export const postsAll = async() => {
-    console.log(localStorage.getItem('authToken'))
+    console.log("hola")
     const res = await axios.get('http://localhost:8000/api/v1/posts',{
         headers: {
             Authorization: "Bearer " + localStorage.getItem('authToken')
@@ -30,4 +30,16 @@ export const addPost = async() => {
         payload: res.data
     });
     
+}
+
+export const comentar = async(_id) => {
+    try {
+        const res = await axios.post('http://localhost:8000/api/v1/comments') //hacemos la petición para obtener ese producto en detalle
+        store.dispatch({
+            type: 'GET_POST_DETAIL',
+            payload: res.data
+        })
+    } catch (error) {
+        console.error(error)
+    }
 }
