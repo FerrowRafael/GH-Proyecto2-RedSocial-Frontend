@@ -1,16 +1,43 @@
 @import '../../colors.scss';
 
+.navbar {
+    min-height: 3.25rem;
+    height: 73px;
+    margin-left: 12px;
+    .navbar-start{
+        margin-right: 0px;
+        .navbar-item:hover{
+            background-color: #F1F1F1;
+            padding: -100px 10px -10px 10px;
+            border-radius: 20px;
+        }
+    }
+    .navbar-end{
+        margin-left: 0px;
+    }
+}
 .ant-input-affix-wrapper{
-    margin-top: 5px;
-    width: 1300px ;
+    margin-top: 14px;
+    width: 1330px ;
     height: 45px;
     background-color: #efefef ;
     border-radius: 25px ;
+    margin-bottom: 0px;
+    border: none;
     .ant-input{
         background-color: #efefef;
     }
+    
 }
-
+.navbar-link {
+    width: 50px !important; 
+    height: 50px;
+    background-color: red; 
+}
+.badgeEnlace{
+    display: flex;
+    justify-content: space-between;
+}
 svg{
     color: #767676 ;  
     width:25px;    

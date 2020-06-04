@@ -43,3 +43,20 @@ export const comentar = async(_id) => {
         console.error(error)
     }
 }
+
+// NOMBRE BUSQUEDAS
+export const rdx_resultName = (resultName) => {
+	store.dispatch({
+		type: 'SEARCH_NAME',
+		payload: resultName
+	})
+};
+
+// SEARCH RESULT
+export const rdx_result = async(busqueda) => {
+    const res = await axios.get('http://localhost:8000/api/v1/posts/search/' + busqueda)
+	store.dispatch({
+		type: 'SEARCH_RESULT',
+		payload: res.data
+	})
+};

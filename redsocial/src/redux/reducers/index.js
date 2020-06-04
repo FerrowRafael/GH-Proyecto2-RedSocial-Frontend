@@ -47,6 +47,16 @@ const reducer = (state = { }, action) => {
                 postDetail: action.payload
             } 
 
+        case 'SEARCH_RESULT':
+            return {
+                ...state,
+                result: action.payload
+                }
+        case 'SEARCH_NAME':
+            return {
+                ...state,
+                postSearchResult: action.payload
+            }
         default:
             return state;
     }

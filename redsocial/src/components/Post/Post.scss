@@ -1,7 +1,29 @@
-.post{
-    margin-bottom: 10px;
+.container{
+    column-width:200px;
+    column-gap:15px;
+    max-width:100%;
+    margin:0px 50px
+}
+.container>div{
+    display:inline-block;
+    // column-break-inside:avoid;
+    background:#fff;
+    border-radius:15px;
+    margin-bottom:1em;
+    font-weight:bold;
+    color:#666
+}
+.container>div>div{
+    padding:1em 1em 1em 1em
+}
+.postImg{
+    width:300px;
+    height:auto;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom: 30px;
+}
 
-    img{
-        border-radius: 5%;
-    }
+.navbar{
+    margin-bottom: 0px;
 }

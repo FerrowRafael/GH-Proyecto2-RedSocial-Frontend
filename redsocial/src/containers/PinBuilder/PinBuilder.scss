@@ -1,13 +1,18 @@
+
 ant-card tarjeta ant-card-bordered{
     margin-top: 35px;
     width: 800px;
 }
 
+.navbar-link{
+    width: 135px;
+
+}
 button {
-    background-color: #E2E2E2;
-    width: 350px;
+    background-color: #E60023;
+    width: 80px;
     height: 35px;
-    border-radius: 25px; 
+    border-radius: 0 5px 5px 0; 
 }
 
 strong{

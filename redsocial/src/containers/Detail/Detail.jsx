@@ -37,7 +37,7 @@ class Detail extends Component {
         console.log(id, this.props.posts)
         this.setState({ postactual:((this.props.posts)?.find(post => post.id == id))})
         
-        let checklike = (this.state.postactual?.likes?.pivot)?.find(like => like?.nickname === "User1");
+        let checklike = this.state.postactual?.likes?.find(like => like?.pivot.nickname === "User1");
         console.log(checklike);
         (this.checklike ? this.setState({liked: true}) : this.setState({liked: false})) 
         categoriesAll();
@@ -45,8 +45,9 @@ class Detail extends Component {
     }
 
     dalelike() {
+        const hola = (this.state.postactual?.likes)?.map(like => like.pivot);
         console.log(this.checklike);
-        console.log(this.state.postactual?.id);
+        console.log(hola);
         let post_id= this.props.match.params.id;
         this.togglelikestate()
             axios.post('http://localhost:8000/api/v1/likes', {post_id},{
@@ -97,7 +98,7 @@ class Detail extends Component {
     render() {
         // console.log(this.props.match.params, this.state.postactual?.category?.name)
         let likeCant= this.state.postactual?.likes?.length;
-        console.log(likeCant);
+        console.log(this.state.postactual?.likes);
         const label = this.state.liked ? <button className="btn" onClick={()=>this.daledislike()}>
         <LikeFilled /></button> : <button className="btn" onClick={()=>this.dalelike()}>
         <LikeOutlined /></button>

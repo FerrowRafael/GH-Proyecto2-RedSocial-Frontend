@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import axios from "axios";
 // import { useParams, NavLink } from 'react-router-dom';
-import { Form, Input, Button, notification, Col, Card } from 'antd';
+import { Form, Input, Button, notification, Col, Card, Row } from 'antd';
 import { MailOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
 import './PinBuilder.scss'
 import { connect } from "react-redux";
@@ -41,6 +41,7 @@ class PinBuilder extends Component {
                         <fieldset>
                         <div class="columns">
                             <div>
+                                <div></div>
                                 <Card  style={{ height: "450px", width:"320px", backgroundColor:"#EFEFEF"}}class="file column">
                                     <label class="file-label">
                                         <input class="file-input" type="file" name="filebutton-0" onchange="if (this.files.length > 0) document.getElementById('filename-filebutton-0').innerHTML = this.files[0].name;"/>
@@ -55,15 +56,24 @@ class PinBuilder extends Component {
                                     </label>
                                 
                                 </Card>
-                                <div class="field">
-                                        <Col>
-                                            <button width="100px" htmlType="submit" className="login-form-button">
-                                            <strong>Login</strong>
-                                            </button>
-                                        </Col>
-                                </div>
+                             
                             </div>
                             <div class="column">
+                                <div style={{display: "flex", justifyContent:"flex-end"}}class="field">
+                                    <Row>
+                                        <div class="navbar-item has-dropdown is-hoverable">
+                                            <a class="navbar-link">
+                                                Seleccionar
+                                            </a>
+                                            <div class="navbar-dropdown">
+                                                {(this.props.categories)?.map(category => <a class="navbar-item"> {category?.name}</a>)}
+                                            </div>
+                                        </div>
+                                        <button width="100px" htmlType="submit" className="guardar-form-button">
+                                        <strong>Guardar</strong>
+                                        </button>
+                                    </Row>
+                                </div>
                                 <div class="field">
                                     <div class="control">
                                         <input id="textinput-0" name="textinput-0" type="text" placeholder="Añade un título" class="input is-large"/>
@@ -78,58 +88,14 @@ class PinBuilder extends Component {
                                         <input id="image_path" name="image_path" type="text" placeholder="Explica en que consiste tu pin" class="input"/>
                                     </div>
                                 </div>
-                            
-                                <div class="field">
-                                    <div class="control">
-                                        <input id="text" name="text" type="text" placeholder="Explica en que consiste tu pin" class="input"/>
-                                    </div>
-                                </div>
-
                                 
-                                <div class="field">
-                                    <div class="control">
-                                        <input id="textinput-1" name="category_id" type="text" placeholder="Categoria" class="input"/>
-                                    </div>
-                                </div>
-                                <div class="navbar-item has-dropdown is-hoverable">
-                                    <a class="navbar-link">
-                                        Elige Categoria
-                                    </a>
-                                    <div class="navbar-dropdown">
-                                        {(this.props.categories)?.map(category => <a class="navbar-item"> {category?.name}</a>)}
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         </fieldset>
                     </form>
-                    </Card>
+                </Card>
                     
-            //          <div className="pinBuilder">
-            // <Card>
-            //          <Form
-            //             className="pinBuilderForm"
-            //             {...layout}
-            //             onFinish={this.onFinish}
-            //             onFinishFailed={console.error} >
-            //             <Form.Item name="title">
-            //                 <Input placeholder="Titulo" />
-            //             </Form.Item>
-            //             <Form.Item name="text">
-            //                 <Input placeholder="Texto" />
-            //             </Form.Item>
-            //             <Form.Item name="image_path">
-            //                 <Input type="text" placeholder="Imagen"/>
-            //             </Form.Item>
-            //             <Form.Item name="category_id">
-            //                 <Input type="text" placeholder="Categoria"/>
-            //             </Form.Item>
-            //             <Form.Item>
-            //                 <Button type="primary" htmlType="submit">
-            //                     Guardar pin
-            //                 </Button>   
-            //             </Form.Item>
-            //         </Form> 
+    
         )
     }
 }

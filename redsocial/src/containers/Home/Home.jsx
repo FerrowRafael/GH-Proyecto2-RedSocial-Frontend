@@ -15,19 +15,12 @@ const Home = (props) => {
 
     return (
         <Fragment>
-            <Row gutter={[8, 60]}>
-                <Col className="gutter-row" span={4}>
-                    <div className="posts">
-                        {(props.posts)?.map(post => <Post key={post._id} post={post}/>)}
-                    </div>
-                </Col>
-            </Row>
+            <div class='container'>
+                {(props.posts)?.map(post => <Post key={post._id} post={post}/>)}
+            </div>
+              
 
-            <NavLink to="/pin-builder" exact>
-                <Badge >
-                    <PlusCircleOutlined style={{ fontSize: '32px' }} />
-                </Badge>
-            </NavLink>
+            
         </Fragment>
     )
            
