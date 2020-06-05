@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import { Row, Col, Button, Card } from 'antd';
+import { Col, Card } from 'antd';
 import './Inicio.scss'
 
 class Inicio extends Component{

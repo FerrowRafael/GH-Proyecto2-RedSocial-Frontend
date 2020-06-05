@@ -4,7 +4,6 @@ import store from '../store';
 
 // GET ALL POSTS
 export const postsAll = async() => {
-    console.log("hola")
     const res = await axios.get('http://localhost:8000/api/v1/posts',{
         headers: {
             Authorization: "Bearer " + localStorage.getItem('authToken')

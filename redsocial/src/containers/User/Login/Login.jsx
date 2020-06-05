@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, Fragment } from 'react'
 import { Form, Input, Button, Checkbox, Col, notification, Card } from 'antd';
-import { MailOutlined, UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
+import { MailOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
 import './Login.scss';
 import { useHistory, NavLink } from 'react-router-dom';
 import { login } from '../../../redux/actions/users';

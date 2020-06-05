@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { withRouter } from "react-router-dom";
-import { API_URL } from '../../api-config';
-// import Suggestions from '../Sugerencias/Sugerencias'
-import { Button, Input } from 'antd';
+import { Input } from 'antd';
 import { connect } from "react-redux";
 import { ZoomInOutlined } from '@ant-design/icons';
 //import store from "../../redux/store";

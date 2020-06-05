@@ -1,9 +1,5 @@
 // RESULTS
 import React, { Component, Fragment } from 'react'
-import { Radio } from 'antd';
-import axios from 'axios'
-import { API_URL } from '../../api-config';
-import Post from '../../components/Post/Post';
 import SearchResults from '../../components/SearchResults/SearchResults';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";

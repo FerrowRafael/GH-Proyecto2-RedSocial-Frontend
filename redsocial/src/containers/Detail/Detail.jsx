@@ -1,21 +1,20 @@
 import React, { Component, Fragment } from 'react'
 import axios from "axios";
-// import { useParams, NavLink } from 'react-router-dom';
 import './Detail.scss'
 import { connect } from "react-redux";
 import { categoriesAll } from "../../redux/actions/categories";
 import { postsAll } from "../../redux/actions/posts"
 import { comentariosPost, comentar } from "../../redux/actions/comments";
+import { addLike, dislike, likesPost } from "../../redux/actions/likes";
 import { LikeFilled, LikeOutlined } from '@ant-design/icons';
 import { Row, Col, Card, Button, notification,Input } from 'antd';
-import { useLocation, useParams } from 'react-router-dom'
+// import { useLocation, useParams } from 'react-router-dom'
 
 class Detail extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            active: false,
             postactual: {},
             liked: false,
             text: '',
@@ -26,64 +25,53 @@ class Detail extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // check() {
-    //     (this.checkactual ? this.setState({active: true}) : this.setState({active: false}))
-    //     console.log(this.state.active);
-    // }
-
     componentDidMount() {
         const id = this.props.match.params.id;
-        console.log(this.props.user.id)
-        console.log(id, this.props.posts)
+        console.log(id)
         this.setState({ postactual:((this.props.posts)?.find(post => post.id == id))})
-        
-        let checklike = this.state.postactual?.likes?.find(like => like?.pivot.nickname === "User1");
-        console.log(checklike);
-        (this.checklike ? this.setState({liked: true}) : this.setState({liked: false})) 
+        console.log(this.state.postactual);
+        // let checklike = this.state.postactual?.likes?.find(like => like?.pivot.user_id === "1");
+        // console.log(checklike);
+        // (checklike ? this.setState({liked: true}) : this.setState({liked: false})) 
+        console.log(this.state.liked)
+        console.log(this.checklike)
         categoriesAll();
         comentariosPost(id);
+        likesPost(id)
     }
 
+    // LIKES
     dalelike() {
         const hola = (this.state.postactual?.likes)?.map(like => like.pivot);
         console.log(this.checklike);
-        console.log(hola);
         let post_id= this.props.match.params.id;
         this.togglelikestate()
-            axios.post('http://localhost:8000/api/v1/likes', {post_id},{
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem('authToken')
-                }
-            })
-                .catch(console.error)
+        addLike(post_id); 
         postsAll();
     }
 
     daledislike() {
         this.togglelikestate()
         let post_id= this.props.match.params.id;
-        axios.delete('http://localhost:8000/api/v1/likes' + post_id, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('authToken')
-            }
-        })
-            .catch(console.error)
+        dislike(post_id);
         postsAll();
     }
-
+    /* fin LIKES */
+    
     togglelikestate(){
         this.setState({
             liked: !this.state.liked
         });
+        console.log(this.state.liked)
     }
 
+    // COMENTARIOS
     handleSubmit(event) {
         event.preventDefault();
         let text = this.state.text
         let post_id = this.props.match.params.id;
         console.log(text, post_id)
-        comentar({text}, post_id);
-        
+        comentar({text}, post_id); 
     }
 
     handleChange(event) {
@@ -96,15 +84,12 @@ class Detail extends Component {
     //   }
 
     render() {
-        // console.log(this.props.match.params, this.state.postactual?.category?.name)
-        let likeCant= this.state.postactual?.likes?.length;
-        console.log(this.state.postactual?.likes);
         const label = this.state.liked ? <button className="btn" onClick={()=>this.daledislike()}>
         <LikeFilled /></button> : <button className="btn" onClick={()=>this.dalelike()}>
         <LikeOutlined /></button>
         return (
             <Fragment>
-                <Card className="tarjeta" justify style={{ width: 1000, display: 'inline-flex', justifyContent: 'center', alignItems: 'center'  }}>
+                <Card className="tarjeta" justify style={{ width: 930, display: 'inline-flex', justifyContent: 'center', alignItems: 'center'  }}>
                     <Row class="columns">
                         <div class="column is-half" span={12}>
                             <img class="imgDetail" width="100%" src={this.state.postactual?.image_path} alt=""/>
@@ -112,64 +97,66 @@ class Detail extends Component {
 
                         <div class="column is-half" span={12}>
                             <p>{this.state.postactual?.category?.name}</p>
-                            <h3>{this.state.postactual?.title}</h3>
-                            <p>{this.state.postactual?.text}</p>
+                            <h3 >{this.state.postactual?.title}</h3>
+                            <p style={{ fontSize:'14px'  }}>{this.state.postactual?.text}</p>
                             <Row>
-                                <p>Likes <a>{this.state.postactual?.likes?.length}</a> </p>
-                                {(this.state.postactual?.likes)?.map(like => <a class="navbar-item"> {like?.nickname} </a>)}
+                                <p>Likes <a>{this.props.likes_post?.length}</a> </p>
+                                {(this.props.likes_post)?.map(like => <a class="navbar-item"> {like?.user_id} </a>)}
                             </Row>
                             
                             <Row>
+                                <img width="40px" src={this.props.user?.image_path} alt=""/>
                                 <p>{this.state.postactual?.user?.nickname}</p>
                                 <Button>Seguir</Button>
                             </Row>
 
                                 {/* COMENTARIOS */}
-                                <Col class="navbar-item comments">
+                                <Col style={{padding:'0px'}}class="navbar-item comments">
                                     <p><strong>Comentarios</strong></p>
-                                    <div>
-                                        {(this.state.postactual?.comment)?.map(com =>
+                                    <div style={{width:'400px', height:'200px', overflow:'scroll'}}>
+                                        {(this.props?.comments_post)?.map(com =>
                                         <article className="media">
                                             <figure className="media-left">
-                                                <p className="image is-64x64">
-                                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Avatar" />
+                                                <p className="image is-48x48">
+                                                    <img src={com?.user?.image_path} alt="Avatar" />
                                                 </p>
                                             </figure>
                                             <div className="media-content">
-                                                <div className="content ">
+                                                <Card className="content ">
                                                     <p>
-                                                    <strong>{com?.user.nickname}</strong>
+                                                   {com?.user?.nickname}
                                                     <br />
                                                     {com?.text}
                                                     </p>
-                                                </div>
+                                                </Card>
                                             </div>
 
                                         </article>)}
                                     </div>
                                     <div>
-                                        <p>{this.props.user.nickname}</p>
-                                        <form onSubmit={this.handleSubmit}>
-                                            <label>
-                                            Name:
-                                            <input type="text" value={this.state.text} onChange={this.handleChange} />
-                                            </label>
-                                            <input type="submit" value="Submit" />
-                                        </form>
-                                        {/* <form className="patata">
-                                            <input type="text" name="text"  
-                                            placeholder="Busca producto" 
-                                            value={this.state.text}/>
-                                            <Button  type="primary" onClick={() => {this.comentario()}}>Añadir comentario</Button>
-                                           
-                                        </form> */}
+                                        <Row style={{ display:'flex', justifyContent:'space-around', marginTop:'15px'  }}>
+                                            <p className="image is-48x48">
+                                                <img src={this.props.user.image_path} alt="Avatar" />
+                                            </p>
+                                            <form onSubmit={this.handleSubmit}>
+                                                <div>
+                                                    <label>
+                                                        <textarea className="inputs" type="text" value={this.state.text} onChange={this.handleChange} />
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input style={{ display:'flex', justifyContent:'flexEnd'  }}class="button" type="submit" value="Hecho" />
+                                                </div>
+                                            </form>
+                                        </Row>
+                                        
                                     </div>
                                 </Col>
 
                                 <div className="customContainer">
                                     {label}
                                 </div>
-                                <div class="navbar-item has-dropdown is-hoverable">
+                                {/* <div class="navbar-item has-dropdown is-hoverable">
                                     <a class="navbar-link">
                                         Elige Categoria
                                     </a>
@@ -178,66 +165,22 @@ class Detail extends Component {
                                         {(this.props.categories)?.map(category => <a class="navbar-item"> {category?.name}</a>)}
 
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
 
                         </Row>
                     </Card>
-                  {/*<Row className="site-card-border-less-wrapper">
-                    <Card>
-                        <img span={10} src="https://i.pinimg.com/originals/57/6f/32/576f32da8c2856a8875dd6c24f2be29e.jpg" alt=""/>
-                    </Card>
-                    <Col span={6} className="detail"> */}
-
-
-
-
-                    {/* </Col>
-                </Row> */}
-
-                {/* <Row className="product">
-                    <Col span={8} offset={6} className="imagen">
-                        <img span={10} src="https://i.pinimg.com/originals/57/6f/32/576f32da8c2856a8875dd6c24f2be29e.jpg" alt=""/>
-                    </Col>
-                    <Col span={6} className="detail">
-
-
-                        <div>
-                            <Col>
-                                <p>Nickname</p>
-                                <p><strong>{this.postactual?.text}</strong></p>
-                                <p>Comentarios:</p>
-                                <div class="navbar-item has-dropdown is-hoverable">
-                                    <a class="navbar-link">
-                                    More
-                                    </a>
-
-                                    <div class="navbar-dropdown">
-                                        <a class="navbar-item">
-                                            About
-                                        </a>
-                                        <a class="navbar-item">
-                                            Jobs
-                                        </a>
-                                        <a class="navbar-item">
-                                            Contact
-                                        </a>
-                                        <hr class="navbar-divider"/>
-                                        <a class="navbar-item">
-                                            Report an issue
-                                        </a>
-                                    </div>
-                                </div>
-                            </Col>
-                        </div>
-
-                    </Col>
-                </Row> */}
-
             </Fragment>
         )
     }
 }
 
-const mapStateToProps = (state) => ({ posts: state.posts, categories: state.categories, user: state.user, postDetail: state.postDetail })
+const mapStateToProps = (state) => ({ 
+    posts: state.posts,
+    categories: state.categories, 
+    user: state.user, 
+    postDetail: state.postDetail,
+    comments_post: state.comments_post  ,
+    likes_post: state.likes_post 
+})
 export default connect(mapStateToProps)(Detail);

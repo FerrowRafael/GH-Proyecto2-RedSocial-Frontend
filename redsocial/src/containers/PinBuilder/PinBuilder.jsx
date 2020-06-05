@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import axios from "axios";
 // import { useParams, NavLink } from 'react-router-dom';
-import { Form, Input, Button, notification, Col, Card, Row } from 'antd';
-import { MailOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
+import { notification, Card, Row } from 'antd';
 import './PinBuilder.scss'
 import { connect } from "react-redux";
 import { categoriesAll } from "../../redux/actions/categories"; 
+import ImageUpload from '../../components/ImageUpload/ImageUpload';
 
 const layout = {
     labelCol: { span: 8 },
@@ -43,17 +43,8 @@ class PinBuilder extends Component {
                             <div>
                                 <div></div>
                                 <Card  style={{ height: "450px", width:"320px", backgroundColor:"#EFEFEF"}}class="file column">
-                                    <label class="file-label">
-                                        <input class="file-input" type="file" name="filebutton-0" onchange="if (this.files.length > 0) document.getElementById('filename-filebutton-0').innerHTML = this.files[0].name;"/>
-                                            <span class="file-cta">
-                                                <span class="file-icon">
-                                                    <i class="fa fa-upload"></i>
-                                                </span>
-                                                <span class="file-label" id="filename-filebutton-0">
-                                                    Agrega aquí el archivo <br/>que deseas adjuntar
-                                                </span>
-                                            </span>
-                                    </label>
+                                    <ImageUpload/>
+                            
                                 
                                 </Card>
                              

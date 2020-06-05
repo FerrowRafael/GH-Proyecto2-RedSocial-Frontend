@@ -15,6 +15,7 @@ import Profile from './containers/Profile/Profile';
 import Detail from './containers/Detail/Detail';
 import PinBuilder from './containers/PinBuilder/PinBuilder';
 import Results from './containers/Results/Results';
+import ImageUpload from './components/ImageUpload/ImageUpload';
 
 function App() {
   const showHeaderFooter = () => {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/post/:id" component= { Detail } exact/>
             <Route path="/pin-builder" component= { PinBuilder } exact/>
             <Route path="/results/:name" component= { Results } exact/>
+            <Route path="/download" component= { ImageUpload   } exact/>
           </Switch>
         { showHeaderFooter() ? <Footer/> : ''}
       </BrowserRouter>

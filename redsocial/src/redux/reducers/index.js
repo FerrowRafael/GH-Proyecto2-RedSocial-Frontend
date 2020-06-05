@@ -28,18 +28,40 @@ const reducer = (state = { }, action) => {
         } 
 
         // COMMENTS  
-        case 'COMMENTS_POST':
+        case 'GET_COMMENTS':
         return {
             ...state,
             comments_post: action.payload
         } 
 
-        //   // COMMENTS  
-        //   case 'ADD_COMMENT':
-        //     return {
-        //         ...state,
-        //         comments_post: [...state.comments_post, action.payload]
-        //     } 
+        case 'ADD_COMMENT':
+            return {
+                ...state,
+                comments_post: [...state.comments_post, action.payload]
+            } 
+
+        /* fin COMMENTS */
+
+        // LIKES
+        case 'GET_LIKES':
+            return {
+                ...state,
+                likes_post: action.payload
+        } 
+
+        case 'ADD_LIKES':
+            return {
+                ...state,
+                likes_post: [...state.likes_post, action.payload]
+            } 
+
+        case 'DISLIKES':
+            return {
+                ...state,
+                likes_post: [...state.likes_post, action.payload]
+            } 
+
+        /* fin LIKES */
 
         case 'GET_POST_DETAIL':
             return {

@@ -16,7 +16,7 @@ const Home = (props) => {
     return (
         <Fragment>
             <div class='container'>
-                {(props.posts)?.map(post => <Post key={post._id} post={post}/>)}
+                {(props.posts)?.slice(0, 50).map(post => <Post key={post._id} post={post}/>)}
             </div>
               
 

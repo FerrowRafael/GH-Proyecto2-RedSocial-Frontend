@@ -5,15 +5,15 @@ import { NavLink } from 'react-router-dom';
 // import { connect } from "react-redux";
 import { logout } from '../../redux/actions/users';
 // import Search  from '../SearchBar/SearchBar'
-import { Input, Badge } from 'antd';
-import { BellFilled, MessageFilled, CrownFilled, ZoomInOutlined, DownOutlined } from '@ant-design/icons';
+import { Badge } from 'antd';
+import { BellFilled, MessageFilled, CrownFilled } from '@ant-design/icons';
 
 class Header extends Component {
 
     render(){
         console.log(this.props.user)
         return (
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav className="navbar" role="navigation" aria-label="main navigation">
             {/* <div class="navbar-brand">
                 <NavLink to="/home" exact class="navbar-item">
                 <img src="https://i.pinimg.com/originals/0d/ea/4a/0dea4ad3030467e2f65cde00935ba62b.png" width="28" height="28"/>
@@ -42,13 +42,6 @@ class Header extends Component {
                 <div className="search">
                     <Search/>
                 </div>
-                {/* <div class="navbar-center">
-                    <div class="navbar-item">
-                        <div class="control">
-                            <Input prefix={<ZoomInOutlined />} $blue class="input" type="text" placeholder="Buscar"/>
-                        </div>
-                    </div>
-                </div> */}
 
                 <div class="navbar-end">
                     <div class="navbar-item">

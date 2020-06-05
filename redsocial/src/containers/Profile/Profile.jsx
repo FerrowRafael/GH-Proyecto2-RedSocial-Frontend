@@ -8,8 +8,8 @@ import { PlusCircleOutlined, EditFilled, UploadOutlined } from '@ant-design/icon
 class Profile extends Component{
 
     render(){
-        console.log(this.props.users?.nickname)
-    
+        console.log(this.props.user?.nickname)
+        console.log(this.props.user?.image_path)
     return (
         <div className="profileContainer">
             <div className="badges columns">
@@ -43,7 +43,7 @@ class Profile extends Component{
                     </Row>
                 </div>
                 <div>
-                    <img width="100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" alt=""/>
+                    <img width="100px" src={this.props.user?.image_path} alt=""/>
                 </div>
             </Row>
             <Row className="tableros">

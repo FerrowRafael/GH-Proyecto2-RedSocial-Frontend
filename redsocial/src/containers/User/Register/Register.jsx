@@ -3,7 +3,6 @@ import { Form, Input, Button, notification, Col, Card } from 'antd';
 import { MailOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 import './Register.scss';
-import { API_URL } from '../../../api-config';
 import axios from 'axios';
 const layout = {
     labelCol: { span: 8 },
