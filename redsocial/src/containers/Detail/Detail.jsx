@@ -71,7 +71,7 @@ class Detail extends Component {
         let text = this.state.text
         let post_id = this.props.match.params.id;
         console.log(text, post_id)
-        comentar({text}, post_id); 
+        comentar(post_id, {text}); 
     }
 
     handleChange(event) {

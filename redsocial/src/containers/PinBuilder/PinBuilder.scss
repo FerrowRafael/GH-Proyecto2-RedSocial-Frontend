@@ -6,7 +6,8 @@ ant-card tarjeta ant-card-bordered{
 
 .navbar-link{
     width: 135px;
-
+    background-color: #EFEFEF;
+    border-radius:15px 0px 0px 15px;
 }
 button {
     background-color: #E60023;
@@ -18,3 +19,38 @@ button {
 strong{
     color: white;
 }
+
+.main-content-to-download {
+    width: 45%;
+    // box-shadow: $shadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  img{
+    min-width:100%;
+    object-fit:cover;
+  }
+  .fileInput{
+    border-bottom: 4px solid lightgray;
+    border-right: 4px solid lightgray;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    padding: 10px;
+    margin: 15px;
+    cursor: pointer;
+  }
+  .imgPreview{
+    text-align: center;
+    margin: 5px 15px;
+    height: 200px;
+    width: 500px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 5px solid gray;
+    border-bottom: 5px solid gray;}
+    img{
+      width: 100%;
+      height: 100%;}
+    

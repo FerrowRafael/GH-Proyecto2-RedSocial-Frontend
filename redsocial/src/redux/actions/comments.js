@@ -13,12 +13,11 @@ export const comentariosPost = async(post_id) => {
     store.dispatch({ 
         type: 'GET_COMMENTS',
         payload: res.data
-    });
-    
+    });  
 };
 
 // COMMENTS BY POST ID
-export const comentar = async(text, post_id) => {
+export const comentar = async(post_id, text) => {
     console.log(localStorage.getItem('authToken'))
     const res = await axios.post('http://localhost:8000/api/v1/comments/' + post_id, text,{
         headers: {
@@ -27,9 +26,9 @@ export const comentar = async(text, post_id) => {
     })
     .catch(console.error)
     console.log(res);
-    // store.dispatch({ 
-    //     type: 'ADD_COMMENT',
-    //     payload: res.data 
-    // });
+    store.dispatch({ 
+        type: 'ADD_COMMENT',
+        payload: res.data 
+    });
     postsAll();
 };

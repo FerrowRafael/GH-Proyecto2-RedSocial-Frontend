@@ -17,18 +17,21 @@ export const postsAll = async() => {
 };
 
 // CREATE POST
-export const addPost = async() => {
-
-    const res = await axios.post('http://localhost:8000/api/v1/likes', {
-        headers: {
-            Authorization: localStorage.getItem('authToken')
-        }
-    });
-    store.dispatch({ 
-        type: 'ADD_POST',
-        payload: res.data
-    });
-    
+export const addPost = async(formData) => {
+    try {
+        const res = await axios.post('http://localhost:8000/api/v1/posts', formData, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('authToken')
+            }
+        })
+        store.dispatch({
+            type: 'ADD_POST',
+            products: res.data
+        })
+        // products();
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 export const comentar = async(_id) => {
