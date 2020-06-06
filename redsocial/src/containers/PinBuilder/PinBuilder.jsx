@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { addPost, deleteProduct, editProduct } from '../../redux/actions/posts';
+import { addPost } from '../../redux/actions/posts';
 import { Input, notification, Modal, Button, Space, Select, Card, Row } from 'antd';
 import axios from "axios";
 // import { useParams, NavLink } from 'react-router-dom';
