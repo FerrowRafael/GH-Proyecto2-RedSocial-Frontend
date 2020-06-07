@@ -58,22 +58,7 @@ class Header extends Component {
                                 </Badge>
                             </NavLink>
                         </div>
-                        {/* <div class="navbar-item has-dropdown is-hoverable">
-                            <NavLink class="navbar-link" to="/profile" exact>
-                                <Badge>
-                                    <DownOutlined style={{ fontSize: '12px'}} />
-                                </Badge>
-                            </NavLink>
                         
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item">
-                                    Profile
-                                </a>
-                                <a class="button is-primary">
-                                    <NavLink type="link" onClick={logout} to="/home">Logout</NavLink>
-                                </a>
-                            </div>
-                        </div> */}
                         <div class="dropdown is-right is-active">
                             <div class="dropdown-trigger">
                                 {/* <button class="button" aria-haspopup="false" aria-controls="dropdown-menu6"> */}
@@ -91,7 +76,7 @@ class Header extends Component {
                                     </div>
                                     <hr class="dropdown-divider"/>
                                     <a>
-                                        <NavLink type="link" onClick={logout} to="/home">Salir</NavLink>
+                                        <NavLink type="link" onClick={logout} to="/">Salir</NavLink>
                                     </a>
                                 </div>
                             </div>
@@ -104,5 +89,3 @@ class Header extends Component {
     }
 }
 export default Header;
-    // const mapStateToProps = (state) => ({ user: state.user})
-    // export default connect(mapStateToProps)(Header);

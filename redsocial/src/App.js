@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Badge } from 'antd';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 // IMPORT COMPONENTS
 // Components
@@ -16,6 +19,8 @@ import Detail from './containers/Detail/Detail';
 import PinBuilder from './containers/PinBuilder/PinBuilder';
 import Results from './containers/Results/Results';
 import ImageUpload from './components/ImageUpload/ImageUpload';
+import ModalUpdate from './components/ModalUpdate/ModalUpdate';
+import PrivateZone from './guards/PrivateZone';
 
 function App() {
   const showHeaderFooter = () => {
@@ -35,16 +40,31 @@ function App() {
         { showHeaderFooter() ? <Header/> : ''}
           <Switch>
           <Route path="/" component= { Inicio } exact/>
-            <Route path="/home" component= { Home } exact/>
+            
             <Route path="/login" component= {Login} exact/>
             <Route path="/register" component= {Registro} exact/>
-            <Route path="/profile" component= { Profile } exact/>
-            <Route path="/post/:id" component= { Detail } exact/>
-            <Route path="/pin-builder" component= { PinBuilder } exact/>
-            <Route path="/results/:name" component= { Results } exact/>
-            <Route path="/download" component= { ImageUpload   } exact/>
+            {/* <Route path="/profile" component= { Profile } exact/> */}
+           
+            <PrivateZone>
+              <Switch>
+                <Route path="/home" component= { Home } exact/>
+                <Route path="/profile" component={Profile} exact />
+                <Route path="/post/:id" component= { Detail } exact/>
+                <Route path="/pin-builder" component= { PinBuilder } exact/>
+                <Route path="/results/:name" component= { Results } exact/>
+                <Route path="/download" component= { ImageUpload } exact/>
+                <Route path="/modal" component= { ModalUpdate } exact/>
+                {/* <Route exact path='/**' component={NotFound} /> */}
+              </Switch>
+            </PrivateZone>
           </Switch>
-        { showHeaderFooter() ? <Footer/> : ''}
+        { showHeaderFooter() ? 
+        <NavLink to="/pin-builder" exact>
+          <Badge >
+            <PlusCircleOutlined style={{ position: "fixed", zIndex:2,fontSize: '32px', marginTop:"40px",marginLeft:"1680px" }} />
+          </Badge>
+        </NavLink>
+        : ''}
       </BrowserRouter>
     </div>
   );

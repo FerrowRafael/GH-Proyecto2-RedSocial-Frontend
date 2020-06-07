@@ -8,14 +8,8 @@ import { connect } from "react-redux";
 import { categoriesAll } from "../../redux/actions/categories"; 
 import ImageUpload from '../../components/ImageUpload/ImageUpload';
 
-// const layout = {
-//     labelCol: { span: 8 },
-//     wrapperCol: { span: 16 },
-// };
-// const tailLayout = {
-//     wrapperCol: { offset: 8, span: 16 },
-// };
 const { Option } = Select;
+const { TextArea } = Input;
 
 const PinBuilder = (props) => {
     // const [modal, contextHolder] = Modal.useModal();
@@ -33,9 +27,10 @@ const PinBuilder = (props) => {
 
     //Previsualizacion imagen
     const onInputChange = event => {
+        console.log("hello")
         event.preventDefault();
-        setSrcImg: window.URL.createObjectURL(event.target.files[0])
-        
+        setSrcImg(window.URL.createObjectURL(event.target.files[0]))
+        console.log(srcImg)
         if (event.target.files.length > 0) {
         } else {
          this.setState({
@@ -44,6 +39,7 @@ const PinBuilder = (props) => {
        }
     };
     
+    // Darle a Guardar
     const handleSubmit = event => {
         console.log("hola");
         event.preventDefault();
@@ -56,7 +52,7 @@ const PinBuilder = (props) => {
         addPost(formData)
             
           .then(res => {
-            notification.success({ message: 'Product successfully uploaded ' })
+            notification.success({ message: 'Pin creado satisfactoriamente' })
           })
           .catch((error) => {
             console.error(error)
@@ -65,84 +61,55 @@ const PinBuilder = (props) => {
 
     
         return(
-                <Card className="tarjeta" justify style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop: '35px', width: '800px', height:"570px", marginLeft: "470px" }}>
-                    <div className="createProduct">
-                        
-                        <form className="formProduct"action="" onSubmit={handleSubmit}>
-                            <input
+            <Card className="tarjeta" justify style={{ display: 'flex', justifyContent: 'center',marginTop: '35px', width: '800px', height:"570px", marginLeft: "470px" }}>
+                <div className="createProduct">
+                    <form className="formProduct"action="" onSubmit={handleSubmit}>
+                            {/* <input
                                 id="import-file"
                                 type="file"
                                 value={setTerm}
                                 onChange={onInputChange}
                                 accept="image/jpg, image/png, image/jpeg"
-                            />
-                            <div className="main-content-to-download">
-                                <img alt="uploaded image" src={srcImg || "https://i.vimeocdn.com/portrait/20982096_300x300"} />
+                            /> */}
+                            <div>
+                                <div className="categoryPin">
+                                    <div style={{display:"flex", flexDirection:"row"}}>
+                                        <Select defaultValue="5ead8df3174cc9ac477107dc" name="CategoryId" 
+                                        value={categoryId}
+                                        onChange={(value)=>setCategoryId(value)}
+                                        style={{  height:35,width: 135}} >
+                                        {(props.categories)?.map(category => <Option value={category?.id}> {category?.name}</Option>)}
+                                        </Select>
+                                        <input style={{ width: 80, backgroundColor:"red" }} className="inputButton" type="submit" value="Guardar" />
+                                        
+                                    </div>    
+                                </div>
                             </div>
-                            <input type="file" name="imageProduct" id="file" class="input-file" />
-                            {/* <label for="file" class="btn btn-tertiary js-labelFile">
-                                <i class="icon fa fa-check"></i>
-                                <span class="js-fileName">Choose a file</span>
-                            </label> */}
-                            <p>  Seleccionar  
-                            <Select defaultValue="5ead8df3174cc9ac477107dc" name="CategoryId" 
-                            value={categoryId}
-                            onChange={(value)=>setCategoryId(value)}
-                            style={{ width: 120 }} >
-                                {(props.categories)?.map(category => <Option value={category?.id}> {category?.name}</Option>)}
-                            </Select>
-                            </p>
-                            <Button type="primary" >
-                                <input className="input" type="submit" value="Create product" />
-                            </Button>
-                            <Input name="title" placeholder="Añade un título" />
-                            <Input name="text" placeholder="Explica en qué consiste tu Pin" />
-                        </form>
-                    </div>
-                    {/* <form className="form-horizontal" enctype="multipart/form-data">
-                        <fieldset>
                             <div class="columns">
-                                <div>
-                                    <div></div>
-                                    <Card  style={{ height: "450px", width:"320px", backgroundColor:"#EFEFEF"}}class="file column">
-                                        <ImageUpload/>
+                                <div is-6 lass="column">
+                                    <Card style={{ background:"#EFEFEF",height:"420px",width:"320px",borderRadius:"10px", marginTop:"10px",marginLeft:"30px" }}>
+                                        <div className="main-content-to-download">
+                                            <img style={{ height:"350px"}}className="imageUpload" alt="uploaded image" 
+                                            src={srcImg || "https://i.vimeocdn.com/portrait/20982096_300x300"} />
+                                        </div>
+                                        <input onChange={onInputChange} type="file" name="imageProduct" id="file" class="input-file" />
+                                        {/* <label for="file" class="btn btn-tertiary js-labelFile">
+                                            <i class="icon fa fa-check"></i>
+                                            <span class="js-fileName">Choose a file</span>
+                                        </label> */}
                                     </Card>
                                 </div>
                                 <div class="column">
-                                    <div style={{display: "flex", justifyContent:"flex-end"}}class="field">
-                                        <Row>
-                                            <div class="navbar-item has-dropdown is-hoverable">
-                                                <a class="navbar-link ">
-                                                    Seleccionar
-                                                </a>
-                                                <div class="navbar-dropdown">
-                                                    {(this.props.categories)?.map(category => <a class="navbar-item"> {category?.name}</a>)}
-                                                </div>
-                                            </div>
-                                            <button width="100px" htmlType="submit" className="guardar-form-button">
-                                            <strong>Guardar</strong>
-                                            </button>
-                                        </Row>
+                                    <input name="title" style={{marginTop:"35px",border: "none"}}class="input is-large" type="text" placeholder="Añade un título"/>
+                                    <div style={{marginTop:"35px"}}>
+                                        {/* <img src={props.user.image_path} alt=""/> */}
+                                        <p>{props.user.nickname}</p>
                                     </div>
-                                    <div class="field">
-                                        <div class="control">
-                                            <input id="title" name="title" type="text" placeholder="Añade un título" class="input is-large"/>
-                                        </div>
-                                    </div> 
-                                    <Row>
-                                        <img width="40px" src={this.props.user?.image_path} alt=""/>
-                                        <p>{this.props.user.nickname}</p>
-                                    </Row>
-
-                                    <div class="field">
-                                        <div class="control">
-                                            <input id="text" name="text" type="text" placeholder="Explica en que consiste tu pin" class="input"/>
-                                        </div>
-                                    </div>
+                                    <TextArea style={{border: "none"}}name="text" placeholder="Explica en qué consiste tu Pin" />
                                 </div>
-                            </div>
-                        </fieldset>
-                    </form> */}
+                            </div> 
+                        </form>
+                    </div>
                 </Card>
                     
     

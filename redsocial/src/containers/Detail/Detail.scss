@@ -38,3 +38,29 @@
     height:100px;
     padding: 10px;
 }
+.ant-modal-header {
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    .ant-modal-title {
+        font-size: 28px;
+    }
+}
+.ant-modal-content {
+    width: 820px;
+    height: 550px;
+    border-radius: 15px;
+}
+
+.ant-row {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}   
+
+.ant-modal-footer {
+    bottom: 0;
+    position: absolute;
+    float: right;
+    width: 100%;
+}

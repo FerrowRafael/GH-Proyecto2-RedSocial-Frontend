@@ -16,7 +16,7 @@ export const login = async(user) => {
 
 // LOGOUT   
 export const logout = async() => {
-    const res = await axios.get(API_URL + '/users/logout', {
+    const res = await axios.get('http://localhost:8000/api/v1/users/logout', {}, {
         headers: {
             Authorization: localStorage.getItem('authToken')
         }

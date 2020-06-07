@@ -22,6 +22,11 @@ switch (action.type) {
             ...state,
             postSearchResult: action.payload
         }
+    case 'UPDATE_POST':
+        return {
+            ...state,
+            postSearchResult: action.payload
+        }    
     default:
         return state
 
