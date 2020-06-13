@@ -21,6 +21,7 @@ import Results from './containers/Results/Results';
 import ImageUpload from './components/ImageUpload/ImageUpload';
 import ModalUpdate from './components/ModalUpdate/ModalUpdate';
 import PrivateZone from './guards/PrivateZone';
+import UpdateProfile from './components/UpdateProfile/UpdateProfile';
 
 function App() {
   const showHeaderFooter = () => {
@@ -52,6 +53,7 @@ function App() {
               <Route path="/results/:name" component= { Results } exact/>
               <Route path="/download" component= { ImageUpload } exact/>
               <Route path="/modal" component= { ModalUpdate } exact/>
+              <Route path="/profileUpdate" component= { UpdateProfile } exact/>
               {/* <Route exact path='/**' component={NotFound} /> */}
             </Switch>
           </PrivateZone>

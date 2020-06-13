@@ -26,7 +26,12 @@ switch (action.type) {
         return {
             ...state,
             postSearchResult: action.payload
-        }    
+        } 
+    case 'DELETE_POST':
+        return {
+            ...state,
+            postSearchResult: []
+            }     
     default:
         return state
 

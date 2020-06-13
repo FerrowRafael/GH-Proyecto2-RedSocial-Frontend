@@ -53,6 +53,7 @@ const PinBuilder = (props) => {
             
           .then(res => {
             notification.success({ message: 'Pin creado satisfactoriamente' })
+            
           })
           .catch((error) => {
             console.error(error)

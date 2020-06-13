@@ -37,5 +37,5 @@ class SearchResults extends Component {
 
 }
 
-const mapStateToProps = (state) => ({ posts: state.posts, postSearchResult: state.postSearchResult })
+const mapStateToProps = (state) => ({ posts: state.posts.posts, postSearchResult: state.posts.postSearchResult })
 export default connect(mapStateToProps)(withRouter(SearchResults));

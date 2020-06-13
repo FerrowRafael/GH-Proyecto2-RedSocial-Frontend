@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import './Detail.scss'
-import axios from 'axios';
 import Comments from '../../components/Comments/Comments';
 import { connect } from "react-redux";
 import { categoriesAll } from "../../redux/actions/categories";
@@ -33,7 +32,7 @@ class Detail extends Component {
         const id = this.props.match.params.id;
         postOne(id);
         likesPost(id)
-        console.log("Platano")
+        console.log(id)
         let thisPost = this.props.posts
         this.setState({ postactual:(thisPost)})
         const checklike = (thisPost?.likes)?.map(like => (like.pivot));
@@ -123,14 +122,16 @@ class Detail extends Component {
         }
     /* Fin Modal */
 
-    handleSubmit = (event) =>{
+    handleSubmit(event) {
         event.preventDefault();
+        console.log("editando que es...")
         let post_id = this.props.match.params.id;
         const post= {
             title: event.target.title.value,
             text: event.target.text.value
         }
         updatePost(post,post_id)
+        this.props.history.push('/home')
     }
 
     render() {
@@ -152,9 +153,7 @@ class Detail extends Component {
                     visible={visible}
                     title="Editar este Pin"
                     // onOk={this.handleOk}
-                    onCancel={this.handleCancel}
-                    
-                        >
+                    onCancel={this.handleCancel}>
                         <form className="columns" onSubmit={this.handleSubmit}>
                             <div className="column is-two-thirds">
                                 <Row className="rowUpdate"style={{marginTop:"15px"}}>
@@ -182,18 +181,18 @@ class Detail extends Component {
                             <div className="column">
                                 <img style={{ maxWidth:"230px", marginTop:"15px" }} src={imagen}/>
                             </div>
-                        </form>
-                        <Row className="footerModal">
-                            <Button className="ButtonModal" key="submit" type="warning" loading={loading} onClick={this.delete}>
-                                Eliminar
-                            </Button>
-                            <div style={{display:"flex", justifyContent:"spaceBetween"}}>
-                                <Button className="ButtonModal" key="back" onClick={this.handleCancel}>
-                                    Cancelar
+                            <Row className="footerModal">
+                                <Button className="ButtonModal" key="submit" type="warning" loading={loading} onClick={this.delete}>
+                                    Eliminar
                                 </Button>
-                                <input style={{ width: 80, backgroundColor:"red", color:"white", borderRadius:"25px", marginLeft:"15px" }} className="inputButton" type="submit" value="Guardar" />
-                            </div>
-                        </Row>
+                                <div style={{display:"flex", justifyContent:"spaceBetween"}}>
+                                    <Button className="ButtonModal" key="back" onClick={this.handleCancel}>
+                                        Cancelar
+                                    </Button>
+                                    <input style={{ width: 80, backgroundColor:"red", color:"white", borderRadius:"25px", marginLeft:"15px" }} className="inputButton" type="submit" value="Guardar" />
+                                </div>
+                            </Row>
+                        </form>
                     </Modal>
                 </div>
                 {/* Fin Modal */}

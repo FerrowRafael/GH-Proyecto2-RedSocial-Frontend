@@ -19,7 +19,7 @@ class Profile extends Component{
                             <PlusCircleOutlined style={{ fontSize: '32px' }} />
                         </Badge>
                     </NavLink>
-                    <NavLink to="/home" exact class="navbar-item">
+                    <NavLink to="/profileUpdate" exact class="navbar-item">
                         <Badge>
                             <EditFilled style={{ fontSize: '32px' }} />
                         </Badge>
@@ -90,5 +90,5 @@ class Profile extends Component{
     }
 }
 
-const mapStateToProps = (state) => ({ user: state.user, cart: state.cart })
+const mapStateToProps = (state) => ({ user: state.users.user})
 export default connect(mapStateToProps)(Profile);
