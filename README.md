@@ -317,16 +317,16 @@ export default store;
 ## Vistas Web 
 
 Inicio
-<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./images/Inicio.jpg" alt="Inicio"></a>
+<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/Inicio.jpg" alt="Inicio"></a>
 
 Register/Login
-<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./images/Register.jpg" alt="Register/Login"></a>
+<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/Register.jpg" alt="Register/Login"></a>
 
 Home
-<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./images/Home.jpg" alt="Home"></a>
+<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/Home.jpg" alt="Home"></a>
 
 Detail
-<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./images/Detail.jpg" alt="Detail"></a>
+<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/Detail.jpg" alt="Detail"></a>
 
 Create Post
-<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./images/CreatePost.jpg" alt="CreatePost"></a>
+<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/CreatePost.jpg" alt="CreatePost"></a>
