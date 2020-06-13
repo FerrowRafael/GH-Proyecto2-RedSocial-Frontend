@@ -1,0 +1,23 @@
+/* BARRA DE NAVEGACION */
+// .footer{
+//     border-radius: 10px;
+//     margin-left: 1670px;
+//     margin-top: 650px;
+//     position: fixed;
+//     overflow: hidden;
+//     z-index: 2;
+// }
+
+.footer{
+    border-radius: 10px;
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    position: fixed;
+    z-index: 2;
+    font-size: 25px;
+    margin: 500px;
+    background-color: red;
+    line-height: 1.5; 
+    overflow: hidden;
+}

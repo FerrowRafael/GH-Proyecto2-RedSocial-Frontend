@@ -1,0 +1,64 @@
+
+.inputButton{
+    background-color: #EFEFEF;
+    width: 80px;
+    height: 35px;
+    border-radius: 0 5px 5px 0; 
+    border: none;
+}
+
+strong{
+    color: white;
+}
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+    height: 35px;
+    border-radius: 5px 0 0 5px ;
+}
+.main-content-to-download {
+    width: 100%;
+    // box-shadow: $shadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .imageUpload{
+    min-width:100%;
+    object-fit:cover;
+  }
+  .fileInput{
+    border-bottom: 4px solid lightgray;
+    border-right: 4px solid lightgray;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    padding: 10px;
+    margin: 15px;
+    cursor: pointer;
+  }
+  .imgPreview{
+    text-align: center;
+    margin: 5px 15px;
+    height: 200px;
+    width: 500px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 5px solid gray;
+    border-bottom: 5px solid gray;
+}
+    .imageUpload{
+        width: 300px;
+    
+    }
+
+    .categoryPin {
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+    }
+
+    .input-file{
+        margin-top: 15px;
+    }
+    

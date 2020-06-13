@@ -1,18 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Col, Row, Card } from 'antd';
 import './Post.scss'
 
 const Post = ({ post }) => {
-
+const imagen = 'http://localhost:8000/images/posts/' + post.image_path;
+console.log(imagen);
     return (
-        <div>
-            <Row>
-                <Link className="post" key={post._id} to={'/post/'+post.id}>
-                    <img src={post.image_path} alt="" />
-                </Link>
-            </Row>  
-        </div>
+        <Link key={post.id} to={'/post/'+post.id}>
+            <img className="postImg" src={imagen} alt="" />
+        </Link>
     )
 }
 export default Post;

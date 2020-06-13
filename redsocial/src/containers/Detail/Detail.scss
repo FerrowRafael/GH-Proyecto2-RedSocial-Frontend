@@ -1,0 +1,80 @@
+.navbar-dropdown{
+    overflow: auto;
+    height: 10vh;
+}
+
+.tarjeta{
+    border-radius:25px;
+    box-shadow: 9px 4px 61px -24px rgba(0,0,0,0.75);
+    margin-left: 410px;
+    h3{
+        font-size: 36px;
+    }
+}
+
+.imgDetail{
+    border-radius:25px;
+    img{
+        margin: auto;
+    }    
+}
+
+.comments{
+    overflow: auto;
+    height: 30vh;
+}
+.ant-card-body {
+    padding: 24px;
+    min-width: 100%;
+}
+
+    p{
+        font-size: 16px;
+    }
+
+.inputs{
+    border-radius: 15px;
+    width:300px;
+    height:100px;
+    padding: 10px;
+}
+.ant-modal-header {
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding: 35px;
+    .ant-modal-title {
+        font-size: 28px;
+    }
+}
+.ant-modal-content {
+    width: 820px;
+    height: 550px;
+    border-radius: 15px;
+    margin-top: 50px;
+    margin-left: -140px;
+}
+
+.ant-row {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}   
+
+.ant-modal-footer {
+    display: none;
+}
+
+.footerModal{
+    bottom: 30px;
+    position: absolute;
+    float: right;
+    width: 95%;
+}
+
+.ButtonModal{
+    background-color: #E2E2E2;
+    width: 95px;
+    height: 35px;
+    border-radius: 35px;  
+}

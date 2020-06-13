@@ -10,7 +10,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 const store = createStoreWithMiddleware(
     reducer,
-    load({preloadedState:{}}), // Loading done here
+    load({preloadedState:{comments_post:[], likes_post:[], postDetail:[]}}), // Loading done here
     composeEnhancers(),
 );
 
