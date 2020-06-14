@@ -1,7 +1,7 @@
 # GH-Proyecto3-RedSocial-Frontend 
 
 FrontEnd del tercer proyecto del Bootcamp FullStack de GeeksHubs de una ecommerce de camisetas.
-React(Redux) / Express(MongoDB
+React(Redux) / PHP(Laravel)
 
 ## Table of Content
 
@@ -11,7 +11,7 @@ React(Redux) / Express(MongoDB
 - [Partes API](##-Partes-API)
 - [Documentation](##-Documentation)
 - [Author](##-Author)
-
+- [Vistas Web]
 
 
 ## Built With 🛠️
