@@ -1,6 +1,6 @@
 # GH-Proyecto3-RedSocial-Frontend 
 
-BackEnd del tercer proyecto del Bootcamp FullStack de GeeksHubs de una Red Social clone de Pinterest
+FrontEnd del tercer proyecto del Bootcamp FullStack de GeeksHubs de una red social 
 React(Redux) / PHP(Laravel)
 
 ## Table of Content
@@ -8,10 +8,10 @@ React(Redux) / PHP(Laravel)
 - [Built With](##-Built-With)
 - [Knowledge](##-Knowledge)
 - [Getting Started](##-Getting-Started)
-- [Partes API](##-Partes-API)
+- [Partes](##-PartesI)
 - [Documentation](##-Documentation)
 - [Author](##-Author)
-- [Vistas Web]
+- [Vistas Web](##-VistasWeb)
 
 
 ## Built With 🛠️
@@ -54,47 +54,18 @@ git clone https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend
 
 ### Comenzando proyecto React
 
-Utilizamos express-generator para que nos genere una estructura de proyecto a partir de la cual trabajar.
-
 ```js
-npm install express-generator -g
+npm install -g create-react-app
 
 express --view=pug myapp
 
-cd myapp
+cd nueva-app-react
 
 npm install
 
-DEBUG=myapp:* npm start
+npm start
 ```
 
-
-### Configuración 
-
-Instalación de dependencia
-```js
-$ npm install --save-dev sequelize-cli
-```
-
-Creando modelo 
-```js
-npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
-```
-
-Migrando modelos a DB
-```js
-npx sequelize-cli db:migrate
-```
-
-Creando semilla
-```js
-npx sequelize-cli seed:generate --name demo-user
-```
-
-Migrando semilla a DB
-```js
-npx sequelize-cli db:seed:all
-```
 
 
 ### Arrancar el servidor
@@ -105,7 +76,7 @@ Para arrancar el servidor tienes que introducir el comando:
 npm start
 ```
 
-## Partes API 🗄 #Partes-API
+## Partes 
 
 - Components
 - Containers
@@ -126,11 +97,6 @@ Algunos de mis componentes son:
 #### UpdateProfile
 #### ...
 
-Ejemplo: 
-```js
-ff
-```
-
 
 ### Containers
 
@@ -146,11 +112,6 @@ Mis containers son:
 #### Results
 #### Login
 #### Register
-
-Ejemplo: 
-```js
-ff
-```
 
 
 ### Guards
@@ -329,4 +290,4 @@ Detail
 <a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/Detail.jpg" alt="Detail"></a>
 
 Create Post
-<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="./redsocial/public/images/CreatePost.jpg" alt="CreatePost"></a>
+<a href="https://github.com/FerrowRafael/GH-Proyecto2-RedSocial-Frontend"><img src="redsocial\public\images\CreatePost.jpg" alt="CreatePost"></a>
