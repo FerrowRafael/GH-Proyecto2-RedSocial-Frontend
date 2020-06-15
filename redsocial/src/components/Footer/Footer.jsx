@@ -6,11 +6,11 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 
 const Footer = () => {
     return (
-          <NavLink className="footer" to="/pin-builder" exact>
-            <Badge class="footer">
-              <PlusCircleOutlined style={{ position: "fixed", zIndex:2,fontSize: '32px', marginTop:"40px",marginLeft:"1680px" }} />
-            </Badge>
-          </NavLink>
+      <NavLink to="/pin-builder" exact>
+        <Badge >
+          <PlusCircleOutlined style={{ position: "fixed", zIndex:1,fontSize: '32px', marginTop:"40px",marginLeft:"1680px", wordWrap: 'break-word' }} />
+        </Badge>
+      </NavLink>
     )
 }
 export default Footer;

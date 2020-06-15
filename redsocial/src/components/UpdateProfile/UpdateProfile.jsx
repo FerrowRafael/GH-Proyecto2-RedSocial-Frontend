@@ -67,7 +67,7 @@ class UpdateProfile extends Component {
                     <Row style={{display:"flex", justifyContent:"center"}}>
                         <Form.Item name="name">
                             Nombre
-                            <Input className="site-form-item-icon inputNomAp" value="pepe" placeholder="Ej. Pepe" />
+                            <Input className="site-form-item-icon inputNomAp" placeholder="Ej. Pepe" />
                         </Form.Item>
                         <Form.Item name="surname">
                             Apellidos

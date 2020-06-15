@@ -12,6 +12,11 @@ switch (action.type) {
             ...state,
             postDetail: action.payload
         } 
+    case 'POST_DETAIL_DELETE':
+        return {
+            ...state,
+            postDetail: []
+        } 
     case 'SEARCH_RESULT':
         return {
             ...state,

@@ -30,6 +30,13 @@ export const postOne = async(post_id) => {
     });
 };
 
+export const postDetailDelete = async(post_id) => {
+    store.dispatch({ 
+        type: 'POST_DETAIL_DELETE',
+        payload: []
+    });
+}
+
 // CREATE POST
 export const addPost = async(formData) => {
     try {
@@ -72,7 +79,7 @@ export const deletePost = async(post_id) => {
     console.log(post_id);
     console.log(localStorage.getItem('authToken'));
     try {
-        const res = await axios.delete(`http://localhost:8000/api/v1/posts/${post_id}`,{}, {
+        await axios.delete(`http://localhost:8000/api/v1/posts/` + post_id, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('authToken')
             }
@@ -85,18 +92,6 @@ export const deletePost = async(post_id) => {
         console.error(error)
     }
 }
-
-// export const comentar = async(_id) => {
-//     try {
-//         const res = await axios.post('http://localhost:8000/api/v1/comments') //hacemos la petición para obtener ese producto en detalle
-//         store.dispatch({
-//             type: 'GET_POST_DETAIL',
-//             payload: res.data
-//         })
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }
 
 // NOMBRE BUSQUEDAS
 export const rdx_resultName = (resultName) => {

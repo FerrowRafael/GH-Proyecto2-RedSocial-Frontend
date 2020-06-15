@@ -1,6 +1,5 @@
 import axios from 'axios';
 import store from '../store';
-import { API_URL } from '../../api-config'
 
 // LOGIN
 export const login = async(user) => {

@@ -5,11 +5,7 @@ const PrivateZone = ({ children }) => {
   const hasToken = localStorage.getItem('authToken');
 
   return hasToken ?  children : (
-    <Redirect
-      to={{
-        pathname: '/',
-      }}
-    />
+    <Redirect to={{ pathname: '/'}}/>
   );
 };
 

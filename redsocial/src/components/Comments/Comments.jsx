@@ -29,6 +29,7 @@ class Comments extends Component {
     }
 
     render(){
+        
         return(
             /* COMENTARIOS */
             <Col style={{padding:'0px'}}class="navbar-item comments">
@@ -38,7 +39,8 @@ class Comments extends Component {
                 <article className="media">
                     <figure className="media-left">
                         <p className="image is-48x48">
-                            <img src={com?.user?.image_path} alt="Avatar" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" alt="Avatar" /> 
+            
                         </p>
                     </figure>
                     <div className="media-content">
@@ -56,6 +58,7 @@ class Comments extends Component {
             <div>
                 <Row style={{ display:'flex', justifyContent:'space-around', marginTop:'15px'  }}>
                     <p className="image is-48x48">
+                        
                         <img src={this.props.user?.image_path} alt="Avatar" />
                     </p>
                     <form onSubmit={this.handleSubmit}>
@@ -78,5 +81,6 @@ class Comments extends Component {
 const mapStateToProps = (state) => ({
     comments_post: state.comments.comments_post,
     postDetail: state.posts.postDetail,
+    user: state.users.user,
 })
 export default connect(mapStateToProps)(Comments);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Badge } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
@@ -57,15 +57,15 @@ function App() {
               {/* <Route exact path='/**' component={NotFound} /> */}
             </Switch>
           </PrivateZone>
-          </Switch>
+        </Switch>
 
-        {/* { showHeaderFooter() ? 
+        { showHeaderFooter() ? 
         <NavLink to="/pin-builder" exact>
           <Badge >
-            <PlusCircleOutlined style={{ position: "fixed", zIndex:2,fontSize: '32px', marginTop:"40px",marginLeft:"1680px" }} />
+            <PlusCircleOutlined style={{ position: "fixed",fontSize: '32px', marginTop:"0px",marginLeft:"1680px", wordWrap: 'break-word' }} />
           </Badge>
         </NavLink>
-        : ''} */}
+        : ''}
       </BrowserRouter>
     </div>
   );

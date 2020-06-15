@@ -49,11 +49,10 @@ const PinBuilder = (props) => {
         formData.set('text', event.target.text.value)
         formData.set('category_id', categoryId)
         
-        addPost(formData)
-            
+        addPost(formData) 
           .then(res => {
-            notification.success({ message: 'Pin creado satisfactoriamente' })
-            
+            notification.success({ message: 'Pin creado con éxito' });
+            this.props.history.push('/home/')
           })
           .catch((error) => {
             console.error(error)
@@ -65,17 +64,10 @@ const PinBuilder = (props) => {
             <Card className="tarjeta" justify style={{ display: 'flex', justifyContent: 'center',marginTop: '35px', width: '800px', height:"570px", marginLeft: "470px" }}>
                 <div className="createProduct">
                     <form className="formProduct"action="" onSubmit={handleSubmit}>
-                            {/* <input
-                                id="import-file"
-                                type="file"
-                                value={setTerm}
-                                onChange={onInputChange}
-                                accept="image/jpg, image/png, image/jpeg"
-                            /> */}
                             <div>
                                 <div className="categoryPin">
                                     <div style={{display:"flex", flexDirection:"row"}}>
-                                        <Select defaultValue="5ead8df3174cc9ac477107dc" name="CategoryId" 
+                                        <Select defaultValue="Categorias" name="CategoryId" 
                                         value={categoryId}
                                         onChange={(value)=>setCategoryId(value)}
                                         style={{  height:35,width: 135}} >
@@ -94,16 +86,12 @@ const PinBuilder = (props) => {
                                             src={srcImg || "https://i.vimeocdn.com/portrait/20982096_300x300"} />
                                         </div>
                                         <input onChange={onInputChange} type="file" name="imageProduct" id="file" class="input-file" />
-                                        {/* <label for="file" class="btn btn-tertiary js-labelFile">
-                                            <i class="icon fa fa-check"></i>
-                                            <span class="js-fileName">Choose a file</span>
-                                        </label> */}
+                            
                                     </Card>
                                 </div>
                                 <div class="column">
                                     <input name="title" style={{marginTop:"35px",border: "none"}}class="input is-large" type="text" placeholder="Añade un título"/>
                                     <div style={{marginTop:"35px"}}>
-                                        {/* <img src={props.user.image_path} alt=""/> */}
                                         <p>{props.user.nickname}</p>
                                     </div>
                                     <TextArea style={{border: "none"}}name="text" placeholder="Explica en qué consiste tu Pin" />
