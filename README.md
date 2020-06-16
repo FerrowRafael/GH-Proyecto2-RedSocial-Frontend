@@ -117,7 +117,7 @@ Mis containers son:
 ### Guards
 
 Los Guards nos permiten restringir la entrada a determinadas vistas de nuestra web
-Ejemplo:
+Ejemplo: PrivateZone.jsx
 ```js
 import React from 'react';
 import { Redirect } from 'react-router-dom';
@@ -150,7 +150,7 @@ Dividida en tres partes:
 - Posts
 - Users
 
-Ej. store.js
+Ej. actions/users.js
 ```js
 import axios from 'axios';
 import store from '../store';
@@ -192,7 +192,7 @@ Usamos combine reducers
 - Posts
 - Users
 
-Ej. store.js
+Ej. reducers/post.js
 ```js
 const posts = (state = {}, action) => {
 
